@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+<record id="action_customer_hotel" model="ir.actions.act_window">
+    <field name="name">Hotel Customers</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+</record>
+
+<!-- ........................staff......................... -->
+<record id="view_staffs_list" model="ir.ui.view"> 
+   <field name="name">staff.list</field> 
+   <field name="model">staff</field>
+   <field name="arch" type="xml"> 
+       <list>
+           <field name="staff_name"/>
+           <field name="staff_address"/>
+           <field name="staff_email"/>
+           <field name="staff_mobile"/>
+           <field name="staff_phone"/>
+           <field name="staff_photo" widget="image"/>
+       </list>
+   </field>
+</record>
+
+<record id="view_staffs_form" model="ir.ui.view">        
+   <field name="name">staff.form</field>      
+   <field name="model">staff</field>
+   <field name="arch" type="xml">
+       <form>
+           <sheet>
+               <group>
+                   <group>
+                   <field name="staff_name"/>
+                    <field name="staff_address"/>
+                    <field name="staff_email"/>
+                    <field name="staff_mobile"/>
+                    <field name="staff_phone"/>
+                    <field name="staff_photo" widget="image"/>
+                   </group>
+               </group>
+           </sheet>
+       </form>
+   </field>
+</record>
+
+
+<record id="action_staffs_view" model="ir.actions.act_window">  
+   <field name="name">Staff Details</field>  
+   <field name="res_model">staff</field> 
+   <field name="view_mode">list,form</field> 
+</record>
+
+
+</odoo>

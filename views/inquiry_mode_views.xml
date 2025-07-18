@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+<record id="view_inquiry_mode_list" model="ir.ui.view"> 
+   <field name="name">inquiry.mode.list</field> 
+   <field name="model">inquiry.mode</field>
+   <field name="arch" type="xml"> 
+       <list>
+           <field name="name"/>
+           <field name="hotel_id"/>
+       </list>
+   </field>
+</record>
+
+<record id="view_inquiry_mode_form" model="ir.ui.view">        
+   <field name="name">inquiry.mode.form</field>      
+   <field name="model">inquiry.mode</field>
+   <field name="arch" type="xml">
+       <form>
+           <sheet>
+               <group>
+                   <group>
+                       <field name="name"/>
+                       <field name="hotel_id"/>
+                   </group>
+               </group>
+           </sheet>
+       </form>
+   </field>
+</record>
+
+
+<record id="action_inquiry_mode" model="ir.actions.act_window">  
+   <field name="name">Inquiry Mode</field>  
+   <field name="res_model">inquiry.mode</field> 
+   <field name="view_mode">list,form</field> 
+</record>
+</odoo>

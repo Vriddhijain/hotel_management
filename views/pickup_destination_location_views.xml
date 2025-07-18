@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+<record id="view_hotel_list" model="ir.ui.view"> 
+   <field name="name">pickup.destination.list</field> 
+   <field name="model">pickup.destination</field>
+   <field name="arch" type="xml"> 
+       <list>
+           <field name="name"/>
+           <field name="hotel_id"/>
+       </list>
+   </field>
+</record>
+
+<record id="view_hotel_form" model="ir.ui.view">        
+   <field name="name">pickup.destination.form</field>      
+   <field name="model">pickup.destination</field>
+   <field name="arch" type="xml">
+       <form>
+           <sheet>
+               <group>
+                   <group>
+                       <field name="name"/>
+                       <field name="hotel_id"/>
+                   </group>
+               </group>
+           </sheet>
+       </form>
+   </field>
+</record>
+
+
+<record id="action_pickup_destination" model="ir.actions.act_window">  
+   <field name="name">Pickup Destination</field>  
+   <field name="res_model">pickup.destination</field> 
+   <field name="view_mode">list,form</field> 
+</record>
+
+
+</odoo>

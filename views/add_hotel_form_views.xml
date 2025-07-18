@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+<record id="view_add_hotel_list" model="ir.ui.view"> 
+   <field name="name">add.hotel.list</field> 
+   <field name="model">add.hotel</field>
+   <field name="arch" type="xml"> 
+       <list>
+           <field name="hotel_name"/>
+       </list>
+   </field>
+</record>
+
+<record id="view_add_hotel_form" model="ir.ui.view">        
+   <field name="name">add.hotel.form</field>      
+   <field name="model">add.hotel</field>
+   <field name="arch" type="xml">
+       <form>
+       <field name="is_floor_generated" invisible="1"/>
+            <header>
+                <button name="action_generate_floors" string="Generate Floors" type="object" class="oe_highlight" invisible="is_floor_generated"/>
+                <button name="action_open_room_wizard" string="Generate Rooms" type="object" class="oe_highlight" invisible="is_room_generated"/>
+           </header>
+           <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="hotel_name"/>
+                    </h1>
+                </div>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_floors" type="object" class="oe_stat_button" icon="fa-building">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">View Floors</span>
+                        </div>
+                    </button>
+
+                    <button name="action_view_rooms" type="object" class="oe_stat_button" icon="fa-bed">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">View Rooms</span>
+                        </div>
+                    </button>
+                </div>
+               <field name="photo" widget="image" style=" position: absolute;height:100px;width:100px;top: 0; right: 0 ;object-fit: contain"/>
+               <group>
+                   <group>
+                       <field name="address"/>
+                       <field name="gstin"/>
+                       <field name="total_floor"/>
+                       <field name="total_rooms"/>
+                   </group>
+                   <group>
+                       <field name="phone"/>
+                       <field name="mobile"/>
+                       <field name="email"/>
+                       <field name="website"/>
+                       <field name="priority"/>
+                       <field name="check_in_out"/>
+                   </group>
+               </group>
+                    <notebook>
+                        <page string="Floors">
+                            <field name="floor_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="hotel"/>
+                                </list>
+                            </field>
+                        </page>
+                         <page string="Rooms">
+                        </page>
+                        <page string="About Hotel">
+                            <div>
+                                <ul>
+                                    <li>
+                                        <b>Quiet Hours Policy:</b>
+                                        A quiet hours policy, typically starting in the late evening, to ensure guests have a peaceful stay.
+                                    </li>
+                                    <li>
+                                        <b>Outside Food and Beverages:</b>
+                                        A policy on outside food and beverages, potentially restricting or prohibiting them in certain areas like the restaurant or pool area.
+                                    </li>
+                                    <li>
+                                        <b>Guest Conduct Policy:</b>
+                                        A guest conduct policy, outlining expected behavior and potential consequences for disruptive or harmful actions.
+                                    </li>
+                                </ul>
+                            </div>                         
+                        </page>
+                         <page string="Amenities">
+                             <field name="amenities_ids">
+                                <kanban editable="bottom" widget="kanban" options="{'no_create': True}">
+                                    <t t-name="card">
+                                        <field name="amenities_name"/>
+                                        <field name="charge_type"/>
+                                    </t>
+                                </kanban>
+                            </field>
+                        </page>
+                         <page string="Images">
+                        </page>
+                         <page string="Other Details">
+                        </page>
+                </notebook>
+           </sheet>
+       </form>
+   </field>
+</record>
+
+
+<record id="action_add_hotel_system" model="ir.actions.act_window">  
+   <field name="name">Hotel</field>  
+   <field name="res_model">add.hotel</field> 
+   <field name="view_mode">list,form</field> 
+</record>
+
+
+</odoo>

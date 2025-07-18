@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+<record id="action_account_move_hotel" model="ir.actions.act_window">
+    <field name="name">Hotel Invoices</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('hotel_booking_id', '!=', False)]</field>
+    <field name="context">{}</field>
+</record>
+<record id="action_account_payment_hotel" model="ir.actions.act_window">
+    <field name="name">Hotel Payment</field>
+    <field name="res_model">account.payment</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+</record>
+
+
+</odoo>

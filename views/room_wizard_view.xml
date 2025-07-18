@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="room_wizard_form_view" model="ir.ui.view">
+        <field name="name">room.wizard.form</field>
+        <field name="model">room.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Rooms for Hotel">
+                <group>
+                    <field name="room_ids" >
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="type_id"/>
+                            <field name="floor_id"/>
+                            <field name="status"/>
+                            <field name="charge"/>
+                        </list>
+                    </field>
+                </group>
+                <footer>
+                 <button name="generate_rooms" type="object" string="Generate" class="btn-primary"/>
+                    <button string="Close" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_room_wizard" model="ir.actions.act_window">
+        <field name="name">Generate Rooms</field>
+        <field name="res_model">room.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hotel_management.model_add_hotel"/>
+    </record>
+</odoo>

@@ -1,0 +1,35 @@
+{
+    'name': 'Hotel Management System',
+    'version': '18.0.0.1',
+    'depends': ['base','mail','account','crm'],
+    'summary': 'Hotel Management view',
+    'author': 'vriddhi',
+    'data': [
+       'security/ir.model.access.csv',
+       'views/configuration_views.xml',
+       'views/hotel_views.xml',
+       'views/add_hotel_form_views.xml',
+       'views/rooms_views.xml',
+       'views/customer_staff_view.xml',
+       'views/tags_amenities_views.xml',
+       'views/policy_template_views.xml',
+       'views/room_wizard_view.xml',
+       'views/booking_views.xml',
+       'views/transport_services_views.xml',
+       'views/pickup_destination_location_views.xml',
+       'views/transport_mode_views.xml',
+       'views/inquiry_mode_views.xml',
+       'views/guest_views.xml',
+       'views/lead_views.xml',
+       'views/email_template.xml',
+       'views/send_email_wizard_views.xml',
+       'views/invoices_payments.xml',
+       'views/menu.xml',
+       
+
+    ],
+
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

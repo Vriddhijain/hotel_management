@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_hotel_root" name="Hotel Management" sequence="1"/>
+
+    <!-- Dashboard -->
+    <menuitem id="menu_hotel_dashboard" name="Hotel Dashboard" parent="menu_hotel_root" action="action_hotel_system" sequence="1"/>
+
+    <!-- Inquiry -->
+    <menuitem id="menu_hotel_inquiry" name="Inquiry" parent="menu_hotel_root" sequence="10"/>
+    <menuitem id="menu_hotel_lead" name="Lead" parent="menu_hotel_inquiry" action="crm.crm_lead_all_leads" sequence="1"/>
+
+    <!-- Hotel -->
+    <menuitem id="menu_hotel_hotel" name="Hotel" parent="menu_hotel_root" sequence="20"/>
+    <menuitem id="menu_hotel_hotel_hotel" name="Hotel" parent="menu_hotel_hotel" action="action_add_hotel_system" sequence="1"/>
+    <menuitem id="menu_hotel_booking" name="Booking" parent="menu_hotel_hotel" action="action_hotel_booking" sequence="2"/>
+    <menuitem id="menu_hotel_folio" name="Folio" parent="menu_hotel_hotel" action="action_hotel_system" sequence="3"/>
+    <menuitem id="menu_hotel_check_checkout" name="Check-in/Check-Out Process" parent="menu_hotel_hotel" action="action_hotel_system" sequence="4"/>
+
+    <!-- Rooms -->
+    <menuitem id="menu_hotel_rooms" name="Rooms" parent="menu_hotel_root" sequence="30"/>
+    <menuitem id="menu_hotel_rooms_rooms" name="Rooms" parent="menu_hotel_rooms" action="action_rooms_room" sequence="1"/>
+    <menuitem id="menu_hotel_floors" name="Floors" parent="menu_hotel_rooms" action="action_room_floor" sequence="2"/>
+
+    <!-- Contacts -->
+    <menuitem id="menu_hotel_contacts" name="Contacts" parent="menu_hotel_root" sequence="40"/>
+    <menuitem id="menu_hotel_staff" name="Staff" parent="menu_hotel_contacts" action="action_staffs_view" sequence="1"/>
+    <menuitem id="menu_hotel_customer" name="Customer" parent="menu_hotel_contacts" action="action_customer_hotel" sequence="2"/>
+    <menuitem id="menu_hotel_guest" name="Guest" parent="menu_hotel_contacts" action="action_guest_view" sequence="2"/>
+
+    <!-- Invoicing -->
+    <menuitem id="menu_hotel_invoicing" name="Invoicing" parent="menu_hotel_root" sequence="50"/>
+    <menuitem id="menu_hotel_invoices" name="Invoices" parent="menu_hotel_invoicing" action="action_account_move_hotel" sequence="1"/>
+    <menuitem id="menu_hotel_payments" name="Payments" parent="menu_hotel_invoicing" action="action_account_payment_hotel" sequence="2"/>
+
+    <!-- Services -->
+    <menuitem id="menu_hotel_services" name="Services" parent="menu_hotel_root" sequence="60"/>
+    <menuitem id="menu_hotel_food" name="Food" parent="menu_hotel_services" action="action_hotel_system" sequence="1"/>
+    <menuitem id="menu_hotel_laundry" name="Laundry" parent="menu_hotel_services" action="action_hotel_system" sequence="2"/>
+    <menuitem id="menu_hotel_transportation" name="Transportation" parent="menu_hotel_services" action="action_hotel_system" sequence="3"/>
+    <menuitem id="menu_hotel_ror" name="Request of Repair" parent="menu_hotel_services" action="action_hotel_system" sequence="4"/>
+    <menuitem id="menu_hotel_housekeeping" name="Housekeeping" parent="menu_hotel_services" action="action_hotel_system" sequence="5"/>
+
+    <!-- Reporting -->
+    <menuitem id="menu_hotel_reporting" name="Reporting" parent="menu_hotel_root" sequence="70"/>
+    <menuitem id="menu_hotel_booking_analysis" name="Booking Analysis" parent="menu_hotel_reporting" action="action_hotel_system" sequence="1"/>
+    <menuitem id="menu_hotel_booking_history" name="Hotel Booking History" parent="menu_hotel_reporting" action="action_hotel_system" sequence="2"/>
+
+    <!-- Configuration -->
+    <menuitem id="menu_hotel_configuration" name="Configuration" parent="menu_hotel_root" sequence="80"/>
+    <menuitem id="menu_hotel_rooms_types" name="Rooms Types" parent="menu_hotel_configuration" action="action_rooms_types" sequence="1"/>
+    <menuitem id="menu_hotel_rooms_facilities" name="Rooms Facilities" parent="menu_hotel_configuration" action="room_facility_action" sequence="2"/>
+    <menuitem id="menu_hotel_inquiry_mode" name="Inquiry Mode" parent="menu_hotel_configuration" action="action_inquiry_mode" sequence="3"/>
+    <menuitem id="menu_hotel_transport_mode" name="Transport Mode" parent="menu_hotel_configuration" action="action_transport_mode" sequence="4"/>
+    <menuitem id="menu_hotel_transport_services" name="Transport Services" parent="menu_hotel_configuration" action="action_transport_services" sequence="5"/>
+    <menuitem id="menu_hotel_pickup_destination" name="Pickup Destination Location" parent="menu_hotel_configuration" action="action_pickup_destination" sequence="6"/>
+    <menuitem id="menu_hotel_policy_template" name="Policy Template" parent="menu_hotel_configuration" action="action_policy_template" sequence="7"/>
+    <menuitem id="menu_hotel_policy" name="Policy" parent="menu_hotel_configuration" action="action_policy_view" sequence="8"/>
+    <menuitem id="menu_hotel_tags" name="Tags" parent="menu_hotel_configuration" action="action_tags_view" sequence="9"/>
+    <menuitem id="menu_hotel_ameneities" name="Hotel Ameneities" parent="menu_hotel_configuration" action="action_amenities_view" sequence="10"/>
+    <menuitem id="menu_hotel_seasonable_price" name="Seasonable Price" parent="menu_hotel_configuration" action="action_room_price" sequence="11"/>
+</odoo>

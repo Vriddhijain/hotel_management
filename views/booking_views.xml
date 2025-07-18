@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+<record id="view_booking_list" model="ir.ui.view"> 
+   <field name="name">hotel.booking.list</field> 
+   <field name="model">hotel.booking</field>
+   <field name="arch" type="xml"> 
+       <list>
+           <field name="name"/>
+       </list>
+   </field>
+</record>
+
+
+  <record id="view_form_hotel_booking" model="ir.ui.view">
+    <field name="name">hotel.booking.form</field>
+    <field name="model">hotel.booking</field>
+    <field name="arch" type="xml">
+      <form string="Hotel Booking" class="o_form">
+        <header>
+          <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="payment_state == 'confirmed' or  payment_state == 'invoiced' or payment_state == 'paid'"/>
+            <button name="action_send_email_wizard" string="Send by Email" type="object" class="btn-primary" invisible="payment_state != 'confirmed'"/>
+
+            <button name="create_invoice" string="Create Invoice" type="object" class="btn-primary" invisible="payment_state != 'confirmed'"/>
+            <button name="create_payment" string="Pay" type="object" class="btn-primary" invisible="payment_state == 'confirmed'or payment_state == 'cancelled' or payment_state == 'draft' or payment_state == 'paid' "/>
+            <button name="action_cancel" type="object" string="Cancel" invisible="payment_state == 'paid'"/>
+
+          <field name="payment_state" widget="statusbar" statusbar_visible="draft,confirmed,invoiced,paid,cancelled"/>
+        </header>
+        <sheet>
+          <group>
+            <div class="oe_title">
+              <h1>
+                  <field name="name"/>
+              </h1>
+            </div>
+            <field name="checkin_date"/>
+            <field name="checkout_date"/>
+            <group string="CUSTOMER INFORMATION">
+                <field name="partner_id"/>
+                <field name="address"/>
+                <field name="email" readonly="1"/>
+                <field name="phone" readonly="1"/>
+                <field name="mobile" readonly="1"/>
+            </group>
+            <group string="BOOKING INFORMATION">
+                <field name="booking_date"/>
+                <field name="total_days"/>
+                <field name="inquiry_mode"/>
+                <field name="payment_state" readonly="1"/>        
+            </group>
+            <group string="HOTEL DETAILS">
+                <field name="hotel_id"/>
+                <field name="guest_pickup"/>
+            </group>
+            <group string="ROOM LEAD DETAILS">
+                <field name="total_rooms"/>
+                <field name="adult"/>
+                <field name="child"/>
+                <field name="rooms"/>
+            </group>
+          </group>
+            <notebook>
+            <page string="Rooms Details">
+              <field name="room_line_ids">
+                <list editable="bottom">
+                  <field name="room_type_id"/>
+                  <field name="quantity"/>
+                  <field name="day"/>
+                  <field name="charges" readonly="1" force_save="1"/>
+                  <field name="tax_percent"/>
+                  <field name="amount_total" readonly="1" force_save="1"/>
+                </list>
+              </field>
+            </page>
+            <page string="Guest Details">
+              <field name="guest_ids" >
+                  <list editable="bottom">
+                      <field name="name"/>
+                      <field name="age"/>
+                      <field name="gender"/>
+                      <field name="contact"/>
+                  </list>
+              </field>
+            </page>
+            <page string="Pickup Details">
+            <group>
+              <group string="SERVICE TYPE">
+                      <field name="pickup_service_type"/>
+                      <field name="driver"/>
+              </group>
+              <group string="PICKUP DETAILS">
+               <field name="transport_mode"/>
+               <field name="pickup_location"/>
+               <field name="pickup_destination"/>
+              </group>
+            </group>
+            </page>
+            <page string="Document">
+                <group>
+                    <field name="attachment_ids" widget="many2many_binary"/>
+                </group>
+            </page>
+            <page string="Policy">
+            <group>
+              <field name="policy_id">
+                  <group>
+                      <field name="policy_id"/>
+                      <field name="policy_details" readonly="1"/>
+                  </group>
+              </field>
+            </group>
+            </page>
+            <page string="Other Info">
+            </page>
+          </notebook>
+          <group>
+          <div style="margin-top: 15px; width: 100%; display: flex; justify-content: flex-end;">
+              <div style="width: 200px; border-top: 1px solid #ccc; padding-top: 10px;">
+                  <div style="display: flex; justify-content: space-between;align-items: center; margin-bottom: 5px;">
+                      <label for="room_charge"  style="width: 130px;"><strong>Room Charge:</strong></label>
+                      <field name="room_charge" widget="monetary" options="{'currency_field': 'currency_id'}" readonly="1"/>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                      <label for="tax_amount"><strong>Tax Amount:</strong></label>
+                      <field name="tax_amount" widget="monetary" options="{'currency_field': 'currency_id'}" readonly="1"/>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                      <label for="amount_total"><strong>Total Amount:</strong></label>
+                      <field name="amount_total" widget="monetary" options="{'currency_field': 'currency_id'}" readonly="1"/>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                      <label for="subtotal"><strong>Sub Total:</strong></label>
+                      <field name="subtotal" widget="monetary" options="{'currency_field': 'currency_id'}" readonly="1"/>
+                  </div>
+              </div>
+          </div>
+        </group>
+        </sheet>
+        <chatter/>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_hotel_booking" model="ir.actions.act_window">
+    <field name="name">Hotel Bookings</field>
+    <field name="res_model">hotel.booking</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+
+
+</odoo>

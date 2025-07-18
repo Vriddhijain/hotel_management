@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+<record id="view_room_price_list" model="ir.ui.view">
+    <field name="name">hotel.seasonable.price.list</field>
+    <field name="model">hotel.seasonable.price</field>
+    <field name="arch" type="xml">
+        <list  editable="bottom">
+            <field name="seasonable_name"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="special_charge"/>
+            <field name="active"/>
+        </list>
+    </field>
+</record>
+
+<record id="view_room_price_form" model="ir.ui.view">
+    <field name="name">hotel.seasonable.price.form</field>
+    <field name="model">hotel.seasonable.price</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="seasonable_name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="special_charge"/>
+                    <field name="active"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+<record id="action_room_price" model="ir.actions.act_window">
+    <field name="name">Seasonable price</field>
+    <field name="res_model">hotel.seasonable.price</field>
+    <field name="view_mode">list,form</field>
+</record>
+             <!--- Rooms TYPES -->
+<record id="view_rooms_types_list" model="ir.ui.view"> 
+   <field name="name">rooms.types.list</field> 
+   <field name="model">rooms.types</field>
+   <field name="arch" type="xml"> 
+       <list>
+           <field name="name"/>
+           <field name="charge"/>
+       </list>
+   </field>
+</record>
+
+<record id="view_rooms_types_form" model="ir.ui.view">        
+   <field name="name">rooms.types.form</field>      
+   <field name="model">rooms.types</field>
+   <field name="arch" type="xml">
+       <form>
+           <sheet>
+                   <group>
+                       <field name="name"/>
+                       <field name="charge"/>
+                   </group>
+                    <notebook>
+                        <page string="Image Gallery">
+                            <group>
+                            <field name="rooms_image" widget="image" style="height: 150px; width: 150px; object-fit: contain; border-radius: 10px;"/>
+                            </group>
+                        </page>
+                         <page string="Facilities">
+                          <field name="facilities" widget="many2many_tags"/>
+                        </page>
+                         <page string="Seasonable Price">
+                         <field name="seasonable_price_ids">
+                            <list editable="bottom">
+                                <field name="seasonable_name"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="special_charge"/>
+                                <field name="active"/>
+                            </list>
+                        </field>
+                        </page>
+                </notebook>
+
+           </sheet>
+       </form>
+   </field>
+</record>
+<record id="action_rooms_types" model="ir.actions.act_window">  
+   <field name="name">Rooms Types</field>  
+   <field name="res_model">rooms.types</field> 
+   <field name="view_mode">list,form</field> 
+</record>
+
+<!-- ROOMS FACILITY -->
+<record id="room_facility_list_view" model="ir.ui.view">
+    <field name="name">rooms.facility.list</field>
+    <field name="model">rooms.facility</field>
+    <field name="arch" type="xml">
+        <list string="Room Facilities">
+            <field name="name"/>
+        </list>
+    </field>
+</record>
+<record id="room_facility_kanban_view" model="ir.ui.view">
+   <field name="name">rooms.facility.kanban</field>
+   <field name="model">rooms.facility</field>
+   <field name="arch" type="xml">
+       <kanban>
+       <templates>
+                <t t-name="card">
+                <field name="name"/>
+                 <field name="rooms_facility_image" widget="image" style=" position: absolute;height:100px; width:100px;left: 200px;bottom: 1000px; object-fit: contain" />
+                 </t>
+        </templates>
+       </kanban>
+   </field>
+</record>
+
+<record id="room_facility_action" model="ir.actions.act_window">
+    <field name="name">Room Facilities</field>
+    <field name="res_model">rooms.facility</field>
+    <field name="view_mode">list,kanban</field>
+</record>
+
+<!-- Inquiry Mode -->
+<!-- Floor -->
+
+
+<record id="view_room_floor_list" model="ir.ui.view">
+    <field name="name">room.floor.list</field>
+    <field name="model">room.floor</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="name"/>
+            <field name="hotel"/>
+        </list>
+    </field>
+</record>
+
+<record id="view_room_floor_form" model="ir.ui.view">
+    <field name="name">room.floor.form</field>
+    <field name="model">room.floor</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="hotel"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+<record id="action_room_floor" model="ir.actions.act_window">
+    <field name="name">Room Floors</field>
+    <field name="res_model">room.floor</field>
+    <field name="view_mode">list,form</field>
+</record>
+<!-- seasonable price -->
+
+
+</odoo>

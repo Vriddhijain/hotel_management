@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+ <record id="crm_lead_view_form_inherit_custom" model="ir.ui.view">
+    <field name="name">crm.lead.form.inherit.custom</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[field[@name='mobile']]"  position="after">
+        <label for="hotel"/>
+            <field name="hotel" nolabel="1"/>
+        <label for="checkin_date"/>
+            <field name="checkin_date"  nolabel="1"/>
+        <label for="checkout_date"/>
+            <field name="checkout_date"  nolabel="1"/>
+        <label for="inquiry_mode"/>
+            <field name="inquiry_mode" nolabel="1"/>
+        </xpath>
+    </field>
+</record> 
+<record id="crm_lead_notebook_view_form_inherit_custom" model="ir.ui.view">
+    <field name="name">crm.lead.form.inherit.custom.notebook</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+            <button name="action_create_booking"
+                    type="object"
+                    string="Create Booking"
+                    class="btn-primary"
+                   />
+           </xpath>
+
+            <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                <page string="Guest Details">
+                    <field name="guest_ids">
+                        <list editable="bottom">
+                            <field name="name" string="Guest Name"/>
+                            <field name="age" string="Age"/>
+                            <field name="gender" string="Gender"/>
+                             <field name="type" string="Type"/>
+                            <field name="contact" string="Contact"/>
+                        </list>
+                    </field>
+                </page>
+               <page string="Room Details">
+                <field name="lead_id_room_booking">
+                    <list editable="bottom">
+                        <field name="room_type_id_lead"/>
+                        <field name="quantity"/>
+                        <field name="day"/>
+                        <field name="charges"/>
+                        <field name="tax_percent"/>
+                        <field name="amount_total"/>
+                    </list>
+                </field>               
+                </page>
+            </xpath>
+    </field>
+</record>
+</odoo> 
+
+
